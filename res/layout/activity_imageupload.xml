@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+            android:id="@+id/buttonshow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/camera"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bkg_img_default"
+                android:textSize="30sp"
+                android:textColor="#000000"
+                android:text="拍照" />
+
+            <TextView
+                android:id="@+id/choice"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/bkg_img_default"
+                android:textSize="30sp"
+                android:textColor="#000000"
+                android:text="相册" />
+            
+            <TextView
+	            android:id="@+id/upload"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:layout_weight="1"
+	            android:gravity="center"
+	            android:background="@drawable/bkg_img_default"
+	            android:textSize="30sp"
+	            android:textColor="#000000"
+	            android:text="搜图" />
+            
+        </LinearLayout>
+        
+    <TextView 
+        android:text="请选择搜索引擎!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        />
+    
+ 	<ImageView
+      	android:id="@+id/imageShow"
+      	android:layout_width="match_parent"
+      	android:layout_height="wrap_content"
+      	android:background="@drawable/bkg_img_default"/>
+        
+</LinearLayout>
