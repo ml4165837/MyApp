@@ -2,39 +2,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout 
-		android:id="@+id/browser_header" 
-	  	android:layout_width="match_parent" 
-	  	android:layout_height="40dip"
-	  	android:orientation="horizontal"
-	  	android:background="@drawable/browser_hand_bg">
-	  	
-	    <ImageView
-	    	android:id="@+id/Browser_head_back"
-	  		android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5.0dip"
-			android:src="@drawable/browser_head_back"/>
-	    
-	    <TextView 
-	        android:id="@+id/Browser_head_text"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-			android:layout_marginBottom="7.0dip"
-			android:layout_marginTop="7.0dip"
-			android:textSize="20sp"
-			android:text="Back"/>
-		
-	    <ImageView 
-	        android:id="@+id/refresh"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="8.0dip"
-	        android:layout_marginBottom="5.0dip"
-	        android:layout_marginLeft="200dip"
-	        android:background="@drawable/browser_head_refresh"/>
-	</LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/rl_about_titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="?attr/titleBar"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/Browser_head_back"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/title_back"
+            android:onClick="btn_back"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="23dp"
+            android:background="@drawable/browser_head_refresh" />
+
+    </RelativeLayout>
     <ProgressBar 
         android:id="@+id/WebViewProgress"
 		android:layout_height="wrap_content"
@@ -48,11 +44,12 @@
     <LinearLayout 
         android:orientation="horizontal"
         android:layout_width="match_parent" 
-        android:layout_height="425dip">
+        android:layout_height="425dip"
+        android:layout_weight="1" >
         <WebView
 	        android:id="@+id/Webview"
             android:layout_width="match_parent"
-	        android:layout_height="match_parent" />
+	        android:layout_height="match_parent"/>
     </LinearLayout>
     
 	<RelativeLayout
@@ -60,19 +57,22 @@
 		android:orientation="horizontal" 
 		android:layout_width="match_parent" 
 		android:layout_height="40dip"
-		android:background="@drawable/browser_foot_bg">
+		android:layout_weight="0.5"
+		android:background="?attr/titleBar">
         <ImageView 
             android:id="@+id/browser_foot_goback"
-            android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+            android:layout_width="35dp"
+			android:layout_height="35dp"
 			android:layout_marginLeft="80dip"
+			android:layout_marginTop="5dp"
 			android:background="@drawable/browser_foor_left"/>
         <ImageView 
             android:id="@+id/browser_foot_forward"
-            android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+            android:layout_width="35dp"
+			android:layout_height="35dp"
 			android:layout_toRightOf="@id/browser_foot_goback"
-			android:layout_marginLeft="50dip"
+			android:layout_marginTop="5dp"
+			android:layout_marginLeft="70dip"
 			android:background="@drawable/browser_foor_right"/>
 	</RelativeLayout>
 </LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="FeatherDefaultTheme">
+        <attr format="reference" name="dialog_layout"></attr>
+        <attr format="reference" name="dialog_button"></attr>
+    </declare-styleable>
+
+    <attr name="mainbackground" format="reference"/>
+    <attr name="titleBar" format="reference"/>
+    <attr name="firstViewImage" format="reference"/>
+    <attr name="imageChoiceBackground" format="reference"/>
+</resources>

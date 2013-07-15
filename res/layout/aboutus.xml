@@ -9,21 +9,18 @@
         android:id="@+id/rl_about_titlebar"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:background="@drawable/title_bar"
+        android:background="?attr/titleBar"
         android:gravity="center_vertical" >
 
         <Button
             android:id="@+id/btn_about_back"
             android:layout_width="67dp"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/title_btn_back"
-            android:onClick="btn_back"
-            android:text="返回"
-            android:textColor="#fff"
-            android:textSize="15sp" />
+            android:background="@drawable/title_back"
+            android:onClick="btn_back" />
 
         <TextView
             android:id="@+id/tv_aboutus"
@@ -68,25 +65,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:background="@drawable/preference_first_item"
+            android:background="@drawable/ic_preference_last_normal"
             android:clickable="true"
             android:gravity="center_vertical" >
-
-            <ImageView
-                android:id="@+id/iv_about_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:scaleType="matrix"
-                android:src="@drawable/settings_version" />
 
             <TextView
                 android:id="@+id/tv_about_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/iv_about_version"
                 android:padding="8dp"
                 android:text="版本"
                 android:textColor="#000"
@@ -108,25 +95,15 @@
             android:id="@+id/rl_about_team"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/preference_item"
+            android:background="@drawable/ic_preference_last_normal"
             android:clickable="true"
             android:gravity="center_vertical" >
-
-            <ImageView
-                android:id="@+id/iv_about_team"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:scaleType="matrix"
-                android:src="@drawable/settings_message" />
 
             <TextView
                 android:id="@+id/tv_about_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/iv_about_team"
                 android:padding="8dp"
                 android:text="团队"
                 android:textColor="#000"
@@ -148,25 +125,15 @@
             android:id="@+id/rl_about_us"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/preference_last_item"
+            android:background="@drawable/ic_preference_last_normal"
             android:clickable="true"
             android:gravity="center_vertical" >
-
-            <ImageView
-                android:id="@+id/iv_about_us"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:scaleType="matrix"
-                android:src="@drawable/icon_selfinfo_sel" />
 
             <TextView
                 android:id="@+id/tv_about_us"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/iv_about_us"
                 android:padding="8dp"
                 android:text="作者"
                 android:textColor="#000"

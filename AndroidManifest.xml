@@ -27,12 +27,13 @@
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>  
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
 	<uses-permission android:name="android.permission.ACCESS_GPS"/>
+	<uses-permission android:name="android.permission.VIBRATE" />
 	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppBaseTheme" >
+        android:theme="@style/AppBaseTheme" android:name="com.NewPower.Aviary.MainApplication">
         
         <activity
             android:name="com.NewPower.MyApp.FirstView"
@@ -43,11 +44,67 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.NewPower.Aviary.AviaryActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="unspecified"
+            android:theme="@style/BaseTheme.Impl" >
+            <intent-filter>
+                <action android:name="android.intent.action.CHOOSER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
         
+        <activity
+            android:name="com.aviary.android.feather.FeatherActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
+            android:screenOrientation="unspecified"
+            android:theme="@style/AviaryTheme.Custom"
+            android:process=":standalone" />
+        
+        <activity 
+            android:name="com.NewPower.Aviary.ImageInfoActivity"
+            android:label="@string/image_details"
+            android:noHistory="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AviaryTheme.Custom.Dialog" />        
+
+        <receiver
+            android:name="com.aviary.android.feather.library.receivers.AviarySystemReceiver"
+            android:exported="true"
+            android:process=":aviary_sample_system_receiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>            
+        </receiver>
+        
+        <provider 
+            android:name="com.aviary.android.feather.library.providers.FeatherContentProvider"
+            android:exported="false"
+            android:authorities="com.xfu.NewPower.aviary.launcher.HiResProvider"
+            android:process=":standalone">
+        </provider>
         <activity android:name="com.NewPower.ImageUpload.ImageSearch" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"></activity>
         <activity android:name="com.NewPower.MyApp.SlidingDrawerActivity"></activity>
         <activity android:name="com.NewPower.MyApp.Share_Activity"></activity>
         <activity android:name="com.NewPower.MyApp.MainActivity"></activity>
+        <activity android:name="com.NewPower.Shake.ShakeAndShake" android:theme="@android:style/Theme.NoTitleBar"></activity>
         <activity android:name="com.NewPower.SwichView.ImageDownload" android:theme="@android:style/Theme.NoTitleBar"></activity>
         <activity android:name="com.NewPower.MyApp.SecondActivity"></activity>
         <activity android:name="com.NewPower.MyApp.FourthActivity"></activity>

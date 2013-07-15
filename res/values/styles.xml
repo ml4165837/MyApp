@@ -1,4 +1,17 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <style name="AppTheme_Default" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="mainbackground">@drawable/bkg_img_default1</item>
+        <item name="titleBar">@color/titleBarBlueColor</item>
+        <item name="firstViewImage">@drawable/imag_bg_firstview1</item>
+        <item name="imageChoiceBackground">@drawable/imagechoicebackground1</item>
+    </style>
+    
+    <style name="AppTheme_Another" parent="AppTheme_Default">
+        <item name="mainbackground">@drawable/bkg_img_default2</item>
+        <item name="titleBar">@color/titleBarRedColor</item>
+        <item name="firstViewImage">@drawable/imag_bg_firstview2</item>
+        <item name="imageChoiceBackground">@drawable/imagechoicebackground2</item>
+    </style>
 </resources>
 

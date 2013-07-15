@@ -1,6 +1,5 @@
 package com.NewPower.MyApp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -9,9 +8,13 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.SlidingDrawer;
 import android.widget.Toast;
 
+import com.NewPower.Aviary.AviaryActivity;
 import com.NewPower.ImageUpload.ImageSearch;
+import com.NewPower.Shake.ShakeAndShake;
+import com.NewPower.Shake.ThemeActivity;
 import com.NewPower.SwichView.OnViewChangeListener;
 import com.NewPower.SwichView.ScrollLayout;
 import com.baidu.sharesdk.BaiduShareException;
@@ -21,31 +24,37 @@ import com.baidu.sharesdk.ShareListener;
 import com.baidu.sharesdk.Utility;
 import com.baidu.sharesdk.ui.BaiduSocialShareUserInterface;
 
-public class MainActivity extends Activity {
+@SuppressWarnings("deprecation")
+public class MainActivity extends ThemeActivity {
 	
 	private final static String ApiKey = "VE6GdaZ9v70aCYanoP2kW5mU";
 	//private ImageView topButton;
 	private ImageView leftButton;
 	private ImageView rightTopButton;
+	private ImageView rightDownButton;
 	private ImageView slidingButton1, slidingButton2;
 	private ScrollLayout scrollLayout;
+	private SlidingDrawer slidingDrawer;
 	private long exit;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		//topButton = (ImageView)findViewById(R.id.top);
 		leftButton = (ImageView)findViewById(R.id.left);
 		rightTopButton = (ImageView)findViewById(R.id.rightTop);
+		rightDownButton = (ImageView)findViewById(R.id.rightDown);
 		slidingButton1 = (ImageView)findViewById(R.id.slidingButton1);
 		slidingButton2 = (ImageView)findViewById(R.id.slidingButton2);
 		rightTopButton.setOnTouchListener(new RightTopButtonListener());
-		leftButton.setOnTouchListener(new MapButtonListener());	
+		rightDownButton.setOnTouchListener(new RightDownButtonListener());
+		leftButton.setOnTouchListener(new ShakeButtonListener());
 		slidingButton1.setOnTouchListener(new SlidingButtonListener1());
 		slidingButton2.setOnTouchListener(new SlidingButtonListener2());
 		scrollLayout = (ScrollLayout) findViewById(R.id.ScrollLayout); 	
     	scrollLayout.SetOnViewChangeListener(new ScrollLayoutlistener());
+    	slidingDrawer = (SlidingDrawer)findViewById(R.id.slidingDrawer);
     	//scrollLayout.setOnTouchListener(new ScrollLayoutTouchlistener());
 	}
 
@@ -62,6 +71,25 @@ public class MainActivity extends Activity {
 			return true;
 		}
 	}*/
+	
+	class RightDownButtonListener implements OnTouchListener {
+
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			// TODO Auto-generated method stub
+			if(event.getAction() == MotionEvent.ACTION_UP) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, AviaryActivity.class);
+				startActivity(intent);
+			}
+			if(event.getAction()==MotionEvent.ACTION_DOWN){  
+                /*v.setBackgroundResource(R.drawable.left);  */
+            }else if(event.getAction()==MotionEvent.ACTION_UP){  
+               // v.setBackgroundResource(R.drawable.top); 
+            }
+			return false;
+		}
+	}
 	
 	class ScrollLayoutlistener implements OnViewChangeListener {
 
@@ -92,7 +120,7 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	class MapButtonListener implements OnTouchListener {
+	class ShakeButtonListener implements OnTouchListener {
 
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
@@ -101,7 +129,7 @@ public class MainActivity extends Activity {
 				Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_LONG).show();
 				System.out.println("chick");
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, AboutUsView.class);
+				intent.setClass(MainActivity.this, ShakeAndShake.class);
 				startActivity(intent);
 			}
 			if(event.getAction()==MotionEvent.ACTION_DOWN){  
@@ -152,18 +180,21 @@ public class MainActivity extends Activity {
 	}
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		if(keyCode == KeyEvent.KEYCODE_BACK) {
-			if((System.currentTimeMillis() - exit ) > 2000) {
-				Toast.makeText(MainActivity.this, "再按一次退出程序", Toast.LENGTH_LONG).show();
-				exit = System.currentTimeMillis();
-			} else {
-				finish();
+		if(slidingDrawer.isOpened()) {
+			slidingDrawer.close();
+		} else {
+			if(keyCode == KeyEvent.KEYCODE_BACK) {
+				if((System.currentTimeMillis() - exit ) > 2000) {
+					Toast.makeText(MainActivity.this, "再按一次退出程序", Toast.LENGTH_LONG).show();
+					exit = System.currentTimeMillis();
+				} else {
+					finish();
+				}
+				return true;
 			}
-			return true;
 		}
-		return super.onKeyDown(keyCode, event);
+		return true;
 	}
-	
 private void startSharing(){
 		
 		// create baidu social share instance

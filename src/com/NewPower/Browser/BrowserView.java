@@ -1,10 +1,10 @@
 package com.NewPower.Browser;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.webkit.WebChromeClient;
@@ -16,8 +16,9 @@ import android.widget.ProgressBar;
 
 import com.NewPower.ImageUpload.ImageSearch;
 import com.NewPower.MyApp.R;
+import com.NewPower.Shake.ThemeActivity;
 
-public class BrowserView extends Activity {
+public class BrowserView extends ThemeActivity {
 
 	private ImageView goreturn;
 	private ImageView refresh;
@@ -28,6 +29,7 @@ public class BrowserView extends Activity {
 	private String ua = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0)";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browser);
 		goreturn = (ImageView)findViewById(R.id.Browser_head_back);
